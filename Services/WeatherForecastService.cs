@@ -11,7 +11,7 @@ namespace tracerco_api.Services
 
         private readonly IEnumerable<WeatherForecast> WeatherForecasts;
 
-        public WeatherForecastService ()
+        public WeatherForecastService()
         {
             WeatherForecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
@@ -24,6 +24,11 @@ namespace tracerco_api.Services
         public IEnumerable<WeatherForecast> GetAllForecasts()
         {
             return WeatherForecasts.ToArray();
+        }
+
+        public WeatherForecast GetHottestForecast()
+        {
+            return WeatherForecasts.OrderBy(x => x.TemperatureC).First();
         }
     }
 }
